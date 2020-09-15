@@ -1,13 +1,13 @@
 # AWS CloudFront Deployment
 
-This module creates an AWS CloudFront deployment by creating an S3 bucket and CloudFront distribution.
+This module creates an AWS CloudFront deployment by creating an S3 Bucket and CloudFront distribution. The S3 Bucket created is used as the CloudFront origin.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.6 |
+| terraform | ~> 0.12.29 |
 | aws | ~> 2.53 |
 | template | ~> 2.1 |
 
