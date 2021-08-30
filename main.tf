@@ -74,13 +74,13 @@ resource "aws_s3_bucket" "this" {
 #######################################
 data "aws_iam_policy_document" "this" {
   statement {
-    sid       = "PublicWebAccess"
+    sid       = "0"
     effect    = "Allow"
     actions   = ["s3:GetObject"]
     resources = ["arn:aws:s3:::${var.s3_bucket}/*"]
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.this.iam_arn]
     }
   }
 }
@@ -137,6 +137,13 @@ resource "aws_cloudfront_distribution" "this" {
   custom_error_response {
     error_caching_min_ttl = 0
     error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 0
+    error_code            = 403
     response_code         = 200
     response_page_path    = "/index.html"
   }
