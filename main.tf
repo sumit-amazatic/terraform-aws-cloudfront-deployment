@@ -40,7 +40,7 @@ resource "aws_route53_record" "this" {
 ########################
 resource "aws_s3_bucket" "this" {
   bucket = var.s3_bucket
-  acl    = "public-read"
+  # acl    = "public-read"
   tags   = var.tags
   policy = data.aws_iam_policy_document.this.json
 
